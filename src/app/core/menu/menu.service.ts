@@ -28,7 +28,23 @@ const MENUITEMS = [
     icon: 'basic-accelerator'
   },
   {
-    state: 'authentication',
+    state: 'expense',
+    name: 'EXPENSES',
+    type: 'sub',
+    icon: 'ecommerce-creditcard',
+    children: [
+      {
+        state: 'newexpense',
+        name: 'NEWEXPENSE'
+      },
+      {
+        state: 'review',
+        name: 'EXPREVIEW'
+      }
+    ]
+  },
+  {
+    state: 'auth',
     name: 'AUTHENTICATION',
     type: 'sub',
     icon: 'basic-lock-open',

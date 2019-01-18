@@ -79,6 +79,10 @@
     "FORGOT": "Forgot",
     "LOCKSCREEN": "Lockscreen",
   
+  "EXPENSES": "Expenses",
+    "NEWEXPENSE": "New Expense",
+    "EXPREVIEW": "Review",
+  
   "ERROR": "Error",
     "404": "404",
     "500": "500",
