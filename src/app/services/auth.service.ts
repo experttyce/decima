@@ -72,7 +72,6 @@ export class AuthService {
     if(!token) token = this.getToken();
     if(!token) return true;
     const date = this.getTokenExpirationDate(token);
-    console.log(date);
     if(date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());
   }
@@ -97,5 +96,6 @@ export class AuthService {
   logout() {
     // remove verifyuser from local storage to log verifyuser out
     localStorage.removeItem('currentUser');
+    return this.http.post(`${environment.baseUrl}/user/logout`,{});
   }
 }

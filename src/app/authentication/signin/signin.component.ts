@@ -40,7 +40,7 @@ export class SigninComponent implements OnInit {
       .login(this.f.email.value, this.f.password.value)
       .subscribe(
         data =>{
-          console.log(data);
+          //console.log(data);
           this.router.navigate([this.returnUrl]);
         },
         (err) => {
