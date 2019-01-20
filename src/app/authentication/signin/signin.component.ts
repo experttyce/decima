@@ -11,9 +11,10 @@ import { AuthService } from 'src/app/services';
 export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: string;
+  isLoading: boolean;
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthService
@@ -21,7 +22,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group ( {
-      email: [null , Validators.compose ( [ Validators.required ] )] , 
+      email: [null , Validators.compose ( [ Validators.required ] )] ,
       password: [null , Validators.compose ( [ Validators.required ] )]
     } );
     // reset login status
@@ -29,23 +30,25 @@ export class SigninComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
   get f() {
-    return this.loginForm.controls; 
+    return this.loginForm.controls;
   }
   onSubmit() {
-    //this.router.navigate ( [ '/' ] );
+    // this.router.navigate ( [ '/' ] );
     if (this.loginForm.invalid) {
       return;
     }
+    this.isLoading = true;
     this.authenticationService
       .login(this.f.email.value, this.f.password.value)
       .subscribe(
-        data =>{
-          //console.log(data);
+        data => {
+          // console.log(data);
           this.router.navigate([this.returnUrl]);
         },
         (err) => {
+          this.isLoading = false;
           console.log(err);
         }
-      )
+      );
   }
 }

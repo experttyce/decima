@@ -15,6 +15,6 @@ export class HeaderComponent {
   @Output() toggleFullscreen = new EventEmitter<void>();
   signout(){
     this.authservice.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/auth']);
   }
 }
